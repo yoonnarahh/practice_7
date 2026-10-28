@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PA3 – AR Hit-Testing – 243122</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    header {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    h1 {
+      font-size: 16px;
+      margin: 0 0 5px 0;
+    }
+    #fallback {
+      color: #ff5555;
+      font-weight: bold;
+      margin: 0;
+    }
+    #overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      box-sizing: border-box;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #status-panel {
+      pointer-events: auto;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.4;
+      max-width: 300px;
+      margin-top: 60px;
+    }
+    #controls {
+      pointer-events: auto;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #555;
+    }
+    #clear {
+      background: #dc3545;
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>AR Product Preview (ID: 243122 | Coffee Table | Multi | 12° | Keep Orient)</h1>
+    <p id="fallback" hidden></p>
+  </header>
+
+  <div id="overlay">
+    <div id="status-panel">
+      <div><b>Student ID:</b> 243122</div>
+      <div><b>Variant:</b> Coffee Table</div>
+      <div><b>Session:</b> <span id="st-session">Inactive</span></div>
+      <div><b>Reticle:</b> <span id="st-reticle">None</span></div>
+      <div><b>Anchors:</b> <span id="st-anchors">Off</span></div>
+      <div><b>Products placed:</b> <span id="st-count">0 / 5</span></div>
+      <div id="st-tracking" style="color: #ffcc00; font-weight: bold; margin-top: 5px;"></div>
+    </div>
+
+    <div id="controls">
+      <button id="ar-button" disabled>Checking AR...</button>
+      <button id="clear">Clear</button>
+    </div>
+  </div>
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>
